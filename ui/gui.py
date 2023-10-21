@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 class App(customtkinter.CTk):
     '''
     This class is responsible for creating the GUI and handling the events
-    Workflow: UserInput/GUI >> Visualizer >> Sorters
+    Workflow: UserInput/GUI >> huffman
     '''
     def __init__(self):
         super().__init__()        
@@ -15,8 +15,8 @@ class App(customtkinter.CTk):
 
         customtkinter.set_appearance_mode("system")
         self.title("Hufman Code")
-        x, y = self.center_window(200, 400)
-        self.geometry(f"800x600+{x}+{y}")
+        x, y = self.center_window(450, 150)
+        self.geometry(f"450x150+{x}+{y}")
         self.grid_columnconfigure(1, weight=1)
         self.left_sidebar_frame = customtkinter.CTkFrame(self,  corner_radius=0)
         self.left_sidebar_frame.grid(row=1, column=1,  sticky="nsew")
@@ -49,7 +49,7 @@ class App(customtkinter.CTk):
         self.display=True
         self.entered_input = self.entry.get()
 
-        from algorithms.sorters import huffman_encoding, huffman_decoding
+        from algorithms.huffman import huffman_encoding, huffman_decoding
         try:
             self.encoded_message, self.huffman_tree = huffman_encoding(self.entered_input)
             self.decoded_message = huffman_decoding(self.encoded_message, self.huffman_tree)
