@@ -17,12 +17,7 @@ class App(customtkinter.CTk):
         self.title("Hufman Code")
         x, y = self.center_window(200, 400)
         self.geometry(f"800x600+{x}+{y}")
-        # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
-        # self.grid_columnconfigure((2, 3), weight=0)
-        # self.grid_rowconfigure((0, 1, 2), weight=1)
-
-        # create Leftsidebar frame with widgets
         self.left_sidebar_frame = customtkinter.CTkFrame(self,  corner_radius=0)
         self.left_sidebar_frame.grid(row=1, column=1,  sticky="nsew")
         self.left_sidebar_frame.grid_rowconfigure(1, weight=1)
@@ -35,14 +30,7 @@ class App(customtkinter.CTk):
         self.huffman_button = customtkinter.CTkButton(self.left_sidebar_frame, command=self.generate_button_event, text="Huffman")
         self.huffman_button.grid(row=3, column=1, padx=20, pady=10)
 
-        # self.optionmenu_1 = customtkinter.CTkOptionMenu(self.left_sidebar_frame, dynamic_resizing=False,
-                                                    #   values=["Encode"])
 
-        # self.optionmenu_1.grid(row=2, column=1, padx=20, pady= 10)
-
-
-  
-    
     def center_window(self,width, height):  # Return for values needed to center Window
         screen_width = self.winfo_screenwidth()  # Width of the screen
         screen_height = self.winfo_screenheight() # Height of the screen     
@@ -62,7 +50,6 @@ class App(customtkinter.CTk):
         self.entered_input = self.entry.get()
 
         from algorithms.sorters import huffman_encoding, huffman_decoding
-        # if self.optionmenu_1.get() == 'Encode':  
         try:
             self.encoded_message, self.huffman_tree = huffman_encoding(self.entered_input)
             self.decoded_message = huffman_decoding(self.encoded_message, self.huffman_tree)
