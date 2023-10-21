@@ -71,10 +71,8 @@ class App(customtkinter.CTk):
             self.encoded_message = "hello"
             self.entry.delete(0, "end") 
         finally: 
-            CTkMessagebox(title="Encode",message=f"Given Input: {self.entered_input} \n Encoded Message: {self.encoded_message} \n Decoded Message: {self.entered_input}",
+            CTkMessagebox(title="Encode",message=f"Given Input: {self.entered_input} \n Encoded Message: {self.encoded_message} \n Decoded Message: {self.decoded_message}",
                 icon="check", options=["Close"], width = 700, height = 300, fade_in_duration = 4)
-
-
 
     def destroy_panel(self):
         self.destroy()   
